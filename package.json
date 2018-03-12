@@ -1,13 +1,14 @@
 {
-  "name": "pixi.js",
+  "name": "pixi.cjk.js",
   "version": "4.7.0",
-  "description": "The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer.",
+  "description": "The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer. With CJK word wrap!",
   "author": "Mat Groves",
   "contributors": [
     "Ivan Popelyshev <ivan.popelyshev@gmail.com>",
     "Matt Karl <matt@mattkarl.com>",
     "Chad Engler <chad@pantherdev.com>",
-    "Richard Davey <rdavey@gmail.com>"
+    "Richard Davey <rdavey@gmail.com>",
+    "William Henderson <definitelyreal@real.lol>"
   ],
   "main": "./lib/index.js",
   "homepage": "http://goodboydigital.com/",
