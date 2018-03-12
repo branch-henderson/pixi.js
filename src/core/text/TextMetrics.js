@@ -1,6 +1,11 @@
 /**
  * The TextMetrics object represents the measurement of a block of text with a specified style.
  *
+ * ```js
+ * let style = new PIXI.TextStyle({fontFamily : 'Arial', fontSize: 24, fill : 0xff1010, align : 'center'})
+ * let textMetrics = PIXI.TextMetrics.measureText('Your text', style)
+ * ```
+ *
  * @class
  * @memberOf PIXI
  */
@@ -447,11 +452,11 @@ export default class TextMetrics
                             }
                             else
                             {
+                                /* eslint-disable max-depth */
                                 if (c === 0 && (j > 0 || firstChar === ' '))
                                 {
                                     result += ' ';
                                 }
-                              
                                 result += character;
                                 spaceLeft -= characterWidth;
                             }
@@ -493,6 +498,45 @@ export default class TextMetrics
         }
 
         return result;
+    }
+
+    /**
+     *  Convienience function for logging each line added
+     *  during the wordWrap method
+     *
+     * @param  {string}   line    - The line of text to add
+     * @param  {boolean}  newLine - Add new line character to end
+     * @return {string}   A formatted line
+     */
+    static addLine(line, newLine = true)
+    {
+        line = (newLine) ? `${line}\n` : line;
+
+        return line;
+    }
+
+    /**
+     * Gets & sets the widths of calculated characters in a cache object
+     *
+     * @param  {string}                    key            The key
+     * @param  {number}                    letterSpacing  The letter spacing
+     * @param  {object}                    cache          The cache
+     * @param  {CanvasRenderingContext2D}  context        The canvas context
+     * @return {number}                    The from cache.
+     */
+    static getFromCache(key, letterSpacing, cache, context)
+    {
+        let width = cache[key];
+
+        if (width === undefined)
+        {
+            const spacing = ((key.length) * letterSpacing);
+
+            width = context.measureText(key).width + spacing;
+            cache[key] = width;
+        }
+
+        return width;
     }
 
     /**
